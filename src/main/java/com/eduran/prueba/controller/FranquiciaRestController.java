@@ -50,4 +50,10 @@ public class FranquiciaRestController {
         return ResponseEntity.ok(productos);
     }
 	
+	@PutMapping("/franquicias/actualizar/{franquiciaId}")
+    public ResponseEntity<Franquicia> actualizarNombreFranquicia(@PathVariable Long franquiciaId, @RequestBody Franquicia franquicia) {
+        Franquicia franquiciaActualizada = franquiciaService.actualizarNombreFranquicia(franquiciaId, franquicia.getNombre());
+        return ResponseEntity.ok(franquiciaActualizada);
+    }
+	
 }

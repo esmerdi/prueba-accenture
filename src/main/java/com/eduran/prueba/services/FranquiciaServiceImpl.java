@@ -29,5 +29,13 @@ public class FranquiciaServiceImpl {
 
         return sucursalRepository.save(sucursal);
     }
+	
+	public Franquicia actualizarNombreFranquicia(Long franquiciaId, String nuevoNombre) {
+        Franquicia franquicia = franquiciaRepository.findById(franquiciaId)
+                .orElseThrow(() -> new RuntimeException("Franquicia no encontrada"));
+
+        franquicia.setNombre(nuevoNombre);
+        return franquiciaRepository.save(franquicia);
+    }
 
 }
