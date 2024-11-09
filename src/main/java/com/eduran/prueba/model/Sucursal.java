@@ -22,8 +22,8 @@ public class Sucursal {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private String name;
+	private Long id;
+	private String nombre;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_franquicia", nullable = false)
@@ -46,20 +46,20 @@ public class Sucursal {
 	@UpdateTimestamp
 	private LocalDateTime updated_at;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public Franquicia getFranquicia() {

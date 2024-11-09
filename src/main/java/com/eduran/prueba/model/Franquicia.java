@@ -19,7 +19,7 @@ public class Franquicia {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private String nombre;
 	
 	@OneToMany(mappedBy = "franquicia")
@@ -31,19 +31,19 @@ public class Franquicia {
 	@UpdateTimestamp
 	private LocalDateTime updated_at;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
-	public String getName() {
+	public String getNombre() {
 		return nombre;
 	}
 	
-	public void setName(String name) {
-		this.nombre = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 	public LocalDateTime getCreated_at() {
