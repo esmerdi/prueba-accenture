@@ -1,5 +1,8 @@
 package com.eduran.prueba.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +53,25 @@ public class ProductoServiceImpl {
 
         producto.setStock(productoStock.getStock());  
         return productoRepository.save(producto); 
+    }
+	
+	public List<Producto> obtenerProductosMayorStockPorFranquicia(Long franquiciaId) {
+        List<Sucursal> sucursales = sucursalRepository.findByFranquiciaId(franquiciaId);
+
+        List<Producto> productosConMayorStock = new ArrayList<>();
+        
+        // Iterar sobre las sucursales y obtener el producto con mayor stock
+        for (Sucursal sucursal : sucursales) {
+            Producto productoMayorStock = productoRepository
+                    .findTopBySucursalIdOrderByStockDesc(sucursal.getId())
+                    .orElse(null);
+
+            if (productoMayorStock != null) {
+                productosConMayorStock.add(productoMayorStock);
+            }
+        }
+
+        return productosConMayorStock;
     }
 
 }
