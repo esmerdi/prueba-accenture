@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  springboot-app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database-1.c1qe2yw2oa7c.us-east-1.rds.amazonaws.com:3306/db_franquicias
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=SecretAWS.2024
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.eduran.prueba.dao.SucursalRepository;
-import com.eduran.prueba.model.Franquicia;
 import com.eduran.prueba.model.Sucursal;
 
 @Service

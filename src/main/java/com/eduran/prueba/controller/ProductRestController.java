@@ -3,6 +3,7 @@ package com.eduran.prueba.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import com.eduran.prueba.model.Producto;
 import com.eduran.prueba.services.ProductoServiceImpl;
 
@@ -27,5 +28,11 @@ public class ProductRestController {
 		Producto productoActualizado = productoService.actualizarStock(productoId, producto);
 		return ResponseEntity.ok(productoActualizado); 
 	}
+	
+	@PutMapping("/productos/actualizar/{productoId}")
+    public ResponseEntity<Producto> actualizarProducto(@PathVariable Long productoId, @RequestBody Producto producto) {
+        Producto productoActualizado = productoService.actualizarProducto(productoId, producto);
+        return ResponseEntity.ok(productoActualizado);
+    }
 
 }

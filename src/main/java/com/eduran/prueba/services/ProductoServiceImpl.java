@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.eduran.prueba.dao.ProductoRepository;
 import com.eduran.prueba.dao.SucursalRepository;
+
 import com.eduran.prueba.model.Producto;
 import com.eduran.prueba.model.Sucursal;
 
@@ -73,5 +74,13 @@ public class ProductoServiceImpl {
 
         return productosConMayorStock;
     }
+	
+	public Producto actualizarProducto(Long productoId, Producto producto) {
+        Producto actualizarProducto = productoRepository.findById(productoId)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 
+        actualizarProducto.setNombre(producto.getNombre());
+        actualizarProducto.setStock(producto.getStock());
+        return productoRepository.save(actualizarProducto);
+    }
 }
