@@ -43,5 +43,13 @@ public class ProductoServiceImpl {
         productoRepository.delete(producto);
         return producto;
     }
+	
+	public Producto actualizarStock(Long productoId, Producto productoStock) {
+        Producto producto = productoRepository.findById(productoId)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        producto.setStock(productoStock.getStock());  
+        return productoRepository.save(producto); 
+    }
 
 }
